@@ -9,7 +9,7 @@ import type { ConfigEntry, DynamicConfigOptions } from './types';
 export function generateConfigFile(options: DynamicConfigOptions = {}): void {
   console.time('Generated config file in');
 
-  const outputPath = 'src/config.gen.ts';
+  const outputPath = 'src/dynamicConfig.gen.ts';
 
   const configEntries = findDefineConfigCalls(options);
 
