@@ -13,11 +13,11 @@ A TypeScript library for managing dynamic configuration in web applications with
 ## Installation
 
 ```bash
-npm install dynamic-config
+npm install @lasmedia/dynamic-config
 # or
-yarn add dynamic-config
+yarn add @lasmedia/dynamic-config
 # or
-pnpm add dynamic-config
+pnpm add @lasmedia/dynamic-config
 ```
 
 ## Quick Start
@@ -26,7 +26,7 @@ pnpm add dynamic-config
 
 ```typescript
 import { z } from 'zod';
-import { defineConfigEntry } from 'dynamic-config';
+import { defineConfigEntry } from '@lasmedia/dynamic-config';
 
 const appConfig = defineConfigEntry({
   name: 'app',
@@ -54,7 +54,7 @@ const appConfig = defineConfigEntry({
 ```typescript
 // vite.config.ts
 import { defineConfig } from 'vite';
-import { dynamicConfig } from 'dynamic-config/vite';
+import { dynamicConfig } from '@lasmedia/dynamic-config/vite';
 
 export default defineConfig({
   plugins: [
@@ -70,7 +70,7 @@ export default defineConfig({
 ### 3. Initialize Configuration at Runtime
 
 ```typescript
-import { initConfig, getConfig } from 'dynamic-config';
+import { initConfig, getConfig } from '@lasmedia/dynamic-config';
 
 // Initialize configuration from remote source
 await initConfig(appConfig.parse, {
