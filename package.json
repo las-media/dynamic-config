@@ -1,8 +1,13 @@
 {
   "name": "@lasmedia/dynamic-config",
-  "private": true,
   "version": "1.0.0",
   "type": "module",
+  "license": "MIT",
+  "author": "lasmedia",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/las-media/dynamic-config"
+  },
   "scripts": {
     "build": "vite build && tsc",
     "test": "vitest",
