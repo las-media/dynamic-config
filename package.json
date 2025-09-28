@@ -1,6 +1,6 @@
 {
   "name": "@lasmedia/dynamic-config",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "module",
   "license": "MIT",
   "author": "lasmedia",
@@ -11,6 +11,7 @@
   "scripts": {
     "build": "rollup -c --configPlugin typescript",
     "test": "vitest",
+    "test:cov": "vitest --coverage",
     "prettier": "prettier . --config ./prettier.config.mjs --write",
     "eslint": "eslint . --config ./eslint.config.mjs --fix",
     "prepare": "husky",
@@ -36,6 +37,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.4",
     "@types/node": "^24.3.0",
+    "@vitest/coverage-v8": "3.2.4",
     "eslint": "^9.34.0",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
@@ -53,6 +55,5 @@
   "peerDependencies": {
     "vite": "^5.0.0 || ^6.0.0 || ^7.0.0",
     "zod": "^4.0.0"
-  },
-  "dependencies": {}
+  }
 }
