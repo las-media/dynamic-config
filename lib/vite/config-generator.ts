@@ -45,11 +45,9 @@ function buildConfigFileContent(configEntries: ConfigEntry[]): string {
 
 ${imports}
 
-export const generateConfig = (sources: { json?: object; env?: object }) => {
-  return {
+export const generateConfig = (sources: { json?: object; env?: object }) => ({
 ${configObject}
-  };
-};
+});
 
 export type AppConfig = {
 ${typeDefinition}
@@ -93,7 +91,7 @@ function generateImports(configEntries: ConfigEntry[]): string {
 function generateConfigObject(configEntries: ConfigEntry[]): string {
   return configEntries
     .map(({ name, exportName }) => {
-      return `    ${name}: ${exportName}.parse(sources),`;
+      return `  ${name}: ${exportName}.parse(sources),`;
     })
     .join('\n');
 }
