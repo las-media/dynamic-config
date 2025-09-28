@@ -23,33 +23,11 @@ async function getJsonSource(
   return res.json();
 }
 
-type ViteDummy = {
-  env?: Record<string, unknown>;
-  __VITE_ENV__?: Record<string, unknown>;
-};
-
 /**
  * Extracts environment variables from various sources depending on the runtime environment
  */
 function getEnvironmentSource() {
-  try {
-    // Try to get import.meta.env directly (works in Vite/browser)
-    return (import.meta as ViteDummy).env || {};
-  } catch {
-    // Fallback for environments where import.meta.env is not available
-    try {
-      return (globalThis as ViteDummy).__VITE_ENV__ || {};
-    } catch {
-      // Last fallback - check if it's exposed on window
-      try {
-        return typeof window !== 'undefined'
-          ? (window as ViteDummy).__VITE_ENV__ || {}
-          : {};
-      } catch {
-        return {};
-      }
-    }
-  }
+  return import.meta.env;
 }
 
 /**
