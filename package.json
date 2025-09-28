@@ -1,6 +1,6 @@
 {
   "name": "@lasmedia/dynamic-config",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "license": "MIT",
   "author": "lasmedia",
@@ -9,7 +9,7 @@
     "url": "git+https://github.com/las-media/dynamic-config"
   },
   "scripts": {
-    "build": "vite build && tsc",
+    "build": "rollup -c --configPlugin typescript",
     "test": "vitest",
     "prettier": "prettier . --config ./prettier.config.mjs --write",
     "eslint": "eslint . --config ./eslint.config.mjs --fix",
@@ -32,6 +32,9 @@
     "README.md"
   ],
   "devDependencies": {
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.4",
     "@types/node": "^24.3.0",
     "eslint": "^9.34.0",
     "eslint-config-prettier": "^10.1.8",
@@ -39,6 +42,8 @@
     "lint-staged": "^16.1.6",
     "prettier": "^3.6.2",
     "prettier-plugin-organize-imports": "^4.2.0",
+    "rollup": "^4.52.3",
+    "tslib": "^2.8.1",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.42.0",
     "vite": "^7.1.2",
@@ -46,6 +51,7 @@
     "zod": "^4.1.5"
   },
   "peerDependencies": {
+    "vite": "^5.0.0 || ^6.0.0 || ^7.0.0",
     "zod": "^4.0.0"
   },
   "dependencies": {}
