@@ -1,9 +1,6 @@
 import nodeResolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
-import { readFileSync } from 'fs';
-
-const pkg = JSON.parse(readFileSync('./package.json', 'utf8'));
 
 export default [
   // Main entry point
@@ -12,31 +9,8 @@ export default [
     output: {
       file: 'dist/index.es.js',
       format: 'es',
-      sourcemap: true,
     },
-    external: [
-      ...Object.keys(pkg.peerDependencies || {}),
-      'fs',
-      'path',
-      'vite',
-    ],
-    plugins: [
-      nodeResolve({
-        preferBuiltins: true,
-      }),
-      typescript({
-        tsconfig: './tsconfig.json',
-        declaration: true,
-        declarationDir: 'dist',
-        outDir: 'dist',
-        exclude: ['tests/**/*', '**/*.test.ts'],
-      }),
-      terser({
-        compress: {
-          drop_console: true,
-        },
-      }),
-    ],
+    plugins: [typescript(), terser()],
   },
   // Vite plugin entry point
   {
@@ -44,30 +18,7 @@ export default [
     output: {
       file: 'dist/vite.es.js',
       format: 'es',
-      sourcemap: true,
     },
-    external: [
-      ...Object.keys(pkg.peerDependencies || {}),
-      'fs',
-      'path',
-      'vite',
-    ],
-    plugins: [
-      nodeResolve({
-        preferBuiltins: true,
-      }),
-      typescript({
-        tsconfig: './tsconfig.json',
-        declaration: true,
-        declarationDir: 'dist',
-        outDir: 'dist',
-        exclude: ['tests/**/*', '**/*.test.ts'],
-      }),
-      terser({
-        compress: {
-          drop_console: true,
-        },
-      }),
-    ],
+    plugins: [nodeResolve(), typescript(), terser()],
   },
 ];

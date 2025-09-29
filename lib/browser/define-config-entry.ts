@@ -1,19 +1,19 @@
-import { z } from 'zod';
+import type { ZodType, output } from 'zod';
 import type { ConfigSources } from './types';
 
 // Helper type to get the type from schema or empty object
-type SchemaType<T> = T extends z.ZodType ? z.output<T> : object;
+type SchemaType<T> = T extends ZodType ? output<T> : object;
 
 // Data sources type - flattened single object combining both schemas
 type DataSources<
-  TJsonSchema extends z.ZodType | undefined,
-  TEnvSchema extends z.ZodType | undefined,
+  TJsonSchema extends ZodType | undefined,
+  TEnvSchema extends ZodType | undefined,
 > = SchemaType<TJsonSchema> & SchemaType<TEnvSchema>;
 
 // DefineConfig function type definition
 type DefineConfigOptions<
-  TJsonSchema extends z.ZodType | undefined,
-  TEnvSchema extends z.ZodType | undefined,
+  TJsonSchema extends ZodType | undefined,
+  TEnvSchema extends ZodType | undefined,
   TConfig,
 > = {
   name: string;
@@ -55,8 +55,8 @@ type DefineConfigResult<TConfig> = {
  * ```
  */
 export function defineConfigEntry<
-  TJsonSchema extends z.ZodType | undefined,
-  TEnvSchema extends z.ZodType | undefined,
+  TJsonSchema extends ZodType | undefined,
+  TEnvSchema extends ZodType | undefined,
   TConfig,
 >(
   options: DefineConfigOptions<TJsonSchema, TEnvSchema, TConfig>

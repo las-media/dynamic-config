@@ -1,6 +1,6 @@
 {
   "name": "@lasmedia/dynamic-config",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "type": "module",
   "license": "MIT",
   "author": "lasmedia",
@@ -9,7 +9,7 @@
     "url": "git+https://github.com/las-media/dynamic-config"
   },
   "scripts": {
-    "build": "rollup -c --configPlugin typescript",
+    "build": "rollup -c rollup.config.ts --configPlugin typescript",
     "test": "vitest",
     "test:cov": "vitest --coverage",
     "prettier": "prettier . --config ./prettier.config.mjs --write",
