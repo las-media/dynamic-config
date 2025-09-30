@@ -24,13 +24,6 @@ async function getJsonSource(
 }
 
 /**
- * Extracts environment variables from various sources depending on the runtime environment
- */
-function getEnvironmentSource() {
-  return import.meta.env;
-}
-
-/**
  * Loads configuration from remote source and applies it using provided generateConfig function
  */
 export async function initConfig<T>(
@@ -41,6 +34,7 @@ export async function initConfig<T>(
     configUrl = '/env.json',
     cacheBusting = true,
     fetchOptions = {},
+    env = import.meta.env,
   } = options;
 
   try {
@@ -49,12 +43,8 @@ export async function initConfig<T>(
       cacheBusting,
       fetchOptions
     );
-    const envVars = getEnvironmentSource();
 
-    const finalConfig = generateConfig({
-      json: configJson,
-      env: envVars,
-    });
+    const finalConfig = generateConfig({ json: configJson, env });
 
     setConfig(finalConfig);
     return finalConfig;

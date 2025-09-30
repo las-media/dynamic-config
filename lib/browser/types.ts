@@ -14,4 +14,6 @@ export interface InitConfigOptions {
 
   /** Custom fetch options */
   fetchOptions?: RequestInit;
+
+  env?: ImportMetaEnv;
 }
